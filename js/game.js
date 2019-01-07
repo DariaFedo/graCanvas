@@ -71,17 +71,38 @@ var update = function (modifier) {
     if (39 in keysDown) { // Player holding right
         hero.x += hero.speed * modifier;
     }
-
-    // Are they touching?
+    
+        // Are they touching?
     if (
-        hero.x <= (monster.x + 32) &&
-        monster.x <= (hero.x + 32) &&
-        hero.y <= (monster.y + 32) &&
-        monster.y <= (hero.y + 32)
+        hero.x <= (monster.x + 32)
+        && monster.x <= (hero.x + 32)
+        && hero.y <= (monster.y + 32)
+        && monster.y <= (hero.y + 32)
     ) {
         ++monstersCaught;
         reset();
     }
+    if(hero.x <= 0){
+        hero.x = 0;
+    }
+    else if(isMaxWidth()){
+        hero.x = canvas.width -32
+    }
+    if(hero.y <= 0){
+        hero.y = 0;
+    }
+    else if(isMaxHeight()){
+        hero.y = canvas.height -32
+    }
+
+};
+
+var isMaxWidth = function(){
+    return hero.x >= canvas.width - 32;
+};
+
+var isMaxHeight = function(){
+    return hero.y >= canvas.height - 32;
 };
 
 // Draw everything
