@@ -82,6 +82,8 @@ var update = function (modifier) {
         ++monstersCaught;
         reset();
     }
+    
+    // hero out of canvas 
     if(hero.x <= 0){
         hero.x = 0;
     }
